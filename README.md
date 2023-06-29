@@ -13,4 +13,4 @@ List the keyboard layouts:
 `loadkeys us-acentos` # closest to US-International with dead keys (for dutch ' and " usage
 
 Verify Boot mode:
-`ls /sys/firmware/efi/efivars' // should be filled with files
+`ls /sys/firmware/efi/efivars' // should be filled with files 
