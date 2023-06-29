@@ -14,3 +14,8 @@ visudo /etc/sudoers
 >>> uncomment %wheel ALL=(ALL:ALL) ALL
     press esc, :w to write, :q to quit (or :wq)
 ```
+
+Todo (but many things need to be done before this):
+Appropriate nvidia card drivers (GTX 970).
+[plasma environment](itsfoss.com/install-kde-arch-linux/)    - This guy made some weird mistakes, but perhaps his instructions help clarify the vague arch-wiki plasma articles.
+[Archwiki on KDE(plasma)](wiki.archlinux.org/title/KDE)      - Missing some details.
