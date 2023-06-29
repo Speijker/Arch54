@@ -28,7 +28,7 @@ Start Lutris: install lutris-GE-Proton8-8 x86_64 in it's wine version management
 The LUG community has written a great script for installing, which is also uploaded (and hopefully maintained) on the AUR
 
 get the LUG-helper script:
-[AUR wiki}(https://wiki.archlinux.org/title/Arch_User_Repository)
+[AUR wiki](https://wiki.archlinux.org/title/Arch_User_Repository)
 navigate to a build folder first (e.g. Downloads/builds)
 ```
 git clone https://aur.archlinux.org/lug-helper.git
@@ -36,8 +36,12 @@ makepkg -s -r -c    #optional options
 sudo pacman -U lug-helper-1:2-7-1-any.pkg.tar.zst    #the name of your build package might differ
 sudo pacman -S zenity    #required for the GUI
 ```
-Launch LUG-Helper from your applications, and run through it.
+Launch LUG-Helper from your applications, and run through it. Additional notes below!
 
 Their amazing github (with great instructions) resides here: https://github.com/starcitizen-lug/lug-helper
 
 Also visit the org's discord: their #tech-desk has amazing people to help
+
+### notes:
+- the install link in their LUG-helper script was broken: the button on Lutris.net works though!
+- 
