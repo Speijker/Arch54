@@ -9,8 +9,8 @@ Because I occasionally fuck up and have to re-install, and I keep forgetting wha
 Start here: [https://wiki.archlinux.org/title/Installation_guide#top-page](Arch Linux Installation Guide).
 
 List the keyboard layouts:
-`ls /usr/share/kbd/keymaps/**/*.map.gz'
-`loadkeys us-acentos' // closest to US-International with dead keys (for dutch ' and " usage
+`ls /usr/share/kbd/keymaps/**/*.map.gz`
+`loadkeys us-acentos` # closest to US-International with dead keys (for dutch ' and " usage
 
 Verify Boot mode:
 `ls /sys/firmware/efi/efivars' // should be filled with files
