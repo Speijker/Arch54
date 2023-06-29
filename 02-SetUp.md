@@ -31,10 +31,9 @@ lspci -k | grep -A 2 -E "(VGA|3D)"
 sudo pacman -S nvidia
 sudo nano /etc/mkinitcpio.conf
 >>> #remove kms from HOOKS array: prevent the initramfs from containing the nouveau module.
-sudo mkinitcpio -P            #regenerate
+sudo mkinitcpio -P            # regenerate
+sudo reboot                   # The nvidia-utils package contains a file which blacklists the nouveau module, so rebooting is necessary.
 ```
-Reboot. The nvidia-utils package contains a file which blacklists the nouveau module, so rebooting is necessary.
-
 Once the driver has been installed, continue to #Xorg configuration or #Wayland.
 
 [NVIDIA#Xorg_configuration](https://wiki.archlinux.org/title/NVIDIA#Xorg_configuration)
