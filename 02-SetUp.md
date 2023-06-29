@@ -36,13 +36,50 @@ sudo reboot                   # The nvidia-utils package contains a file which b
 ```
 Once the driver has been installed, continue to #Xorg configuration or #Wayland.
 
-[NVIDIA#Xorg_configuration](https://wiki.archlinux.org/title/NVIDIA#Xorg_configuration)
-
-Wrong order, but it leads to Xorg installation above!
-
 ### Xorg install
+[Xorg](https://wiki.archlinux.org/title/Xorg). One might try Wayland instead (newest drivers!) but that's for another time.
+
+Install the group (xorg-server package is also fine, but the xorg group also contains items form the xorg-apps package which might be needed:
+```
+sudo pacman -S xorg
+```
+ Arch supplies default configuration files in /usr/share/X11/xorg.conf.d/, and no extra configuration is necessary for most setups. Still...
+
+ [NVIDIA Xorg Config](https://wiki.archlinux.org/title/NVIDIA#Xorg_configuration}
+```
+sudo nvidia-xconfig            #automatic nvidia configuration for xorg.
+sudo nano /etc/X11/xorg.conf   #doublecheck resolution etc.
+```
+
+### KDE Plasma install
+[Arch KDE](https://wiki.archlinux.org/title/KDE#Plasma) (and check [this (not all: bad user management!](https://itsfoss.com/install-kde-arch-linux/)
+```
+sudo pacman -S plasma plasma-wayland-session
+```
+enable drm (since we are using the proprietary driver and not open source)
+```
+sudo nano /etc/default/grub
+>> add  nvidia_drm.modeset=1 kernel parameter (append between the quotes of GRUB_CMDLINE_LINUX_DEFAULT).
+sudo grub-mkconfig -o /boot/grub/grub.cfg            #regenerate grub
+```
+```
+sudo pacman -S kde-applications
+```
+Almost forgot:
+```
+sudo pacman -S networkmanager
+sudo systemctl enable NetworkManager.service
+```
+Display Manager (SDDM is reccommend for KDE plasma)
+```
+sudo pacman -S sddm        #The sddm-kcm package (included in the plasma group) provides a GUI to configure SDDM in Plasma's system settings
+sudo systemctl enable sddm.service
+```
+I hope that's it: if it boots, we'll continue with it's [configuration](https://wiki.archlinux.org/title/KDE#Configuration) (which is done inside plasma).
+```
+sudo reboot
+```
 
 Todo (but many things need to be done before this):
+Automate initcpio update after nvidia drivers are updated!
 
-[plasma environment](itsfoss.com/install-kde-arch-linux/)    - This guy made some weird mistakes, but perhaps his instructions help clarify the vague arch-wiki plasma articles.
-[Archwiki on KDE(plasma)](wiki.archlinux.org/title/KDE)      - Missing some details.
