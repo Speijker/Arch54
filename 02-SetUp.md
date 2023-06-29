@@ -75,11 +75,30 @@ Display Manager (SDDM is reccommend for KDE plasma)
 sudo pacman -S sddm        #The sddm-kcm package (included in the plasma group) provides a GUI to configure SDDM in Plasma's system settings
 sudo systemctl enable sddm.service
 ```
+Automate initcpio update after nvidia drivers are updated!
+```
+sudo nano /etc/pacman.d/hooks/nvidia.hook
+```
+Create the following in the above:
+```
+[Trigger]
+Operation=Install
+Operation=Upgrade
+Operation=Remove
+Type=Package
+Target=nvidia
+Target=linux
+# Change the linux part above and in the Exec line if a different kernel is used
+
+[Action]
+Description=Update NVIDIA module in initcpio
+Depends=mkinitcpio
+When=PostTransaction
+NeedsTargets
+Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
+```
+
 I hope that's it: if it boots, we'll continue with it's [configuration](https://wiki.archlinux.org/title/KDE#Configuration) (which is done inside plasma).
 ```
 sudo reboot
 ```
-
-Todo (but many things need to be done before this):
-Automate initcpio update after nvidia drivers are updated!
-
