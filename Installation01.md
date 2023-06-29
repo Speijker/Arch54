@@ -72,21 +72,47 @@ generate fstab file (disk index, by label for me:)
 genfstab -L /mnt >> /mnt/etc/fstab
 nano /mnt/etc/fstab                     # check all is correctly listed.
 ```
-
-To get wired network, I found I had to:
+Chroot into the system and set local time & locale
+```
+arch-chroot /mnt
+ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
+hwclock --systohc
+nano /etc/locale/gen     #uncomment en_US.UTF-8 UTF-8 and others (en_GB, en_DK, nl_NL)
+locale-gen
+nano /etc/locale.conf
+>> LANG=en_GB.UTF-8
+nano /etc/vconsole.conf
+```
+Netowrking:
+```
+nano /etc/hostname
+>> Arch54      #chose your own name!
+```
+Set Root Password:
+```
+passwd
+```
+Install bootloader ( [GRUB](https://wiki.archlinux.org/title/GRUB) ):
+```
+pacman -S grub efibootmgr
+grub-install --efi-directory=esp --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg        #should detec intel-ucode if installed.
+```
+# exit chroot and reboot (remove live media)
+Should now have a vanilla install. To enable internet if not ready.
 
 create the file /etc/systemd/network/20-wired.network
-
+```
 [Match]
 Name=en*
 Name=eth*
 
 [Network]
 DHCP=yes
-Then either restart or start:
-
+```
+Then enable and reboot:
+```
 $ sudo systemctl start systemd-networkd
 $ sudo systemctl start systemd-resolved
+```
 It's a lot easier if you remember to install dhcpcd, and sudo systemctl start dhcpcd. I've forgotten on a few test systems.
-
-I found parsing the wiki for the info to get a functional network using systemd somewhat obscured and time consuming? But I'm just a stupid ape that likes Arch! YMMV
