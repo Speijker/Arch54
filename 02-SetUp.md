@@ -25,6 +25,7 @@ sudo systemctl enable reflector.timer                  #rather than .service, th
 ```
 Install nvidia drivers (GTX970: NV124(GM204) drivers, so nvidia package is appropriate, which includes nvidia.utils which disables opensource drivers from initram.
 
+Note: you may need the multilib library here already: see part 03, section 1
 [Archwiki](https://wiki.archlinux.org/title/NVIDIA)
 ```
 lspci -k | grep -A 2 -E "(VGA|3D)"
