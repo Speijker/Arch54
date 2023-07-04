@@ -65,7 +65,7 @@ pacstrap -K /mnt base linux linux-firmware
 ```
 Install additional packages?
 ```
-pacstrap -K /mnt filesystem vim nano sudo intel-ucode dhcpcd
+pacstrap -K /mnt vim nano sudo intel-ucode dhcpcd
 ```
 generate fstab file (disk index, by label for me:)
 ```
@@ -77,7 +77,7 @@ Chroot into the system and set local time & locale
 arch-chroot /mnt
 ln -sf /usr/share/zoneinfo/Region/City /etc/localtime
 hwclock --systohc
-nano /etc/locale/gen     #uncomment en_US.UTF-8 UTF-8 and others (en_GB, en_DK, nl_NL)
+nano /etc/locale.gen     #uncomment en_US.UTF-8 UTF-8 and others (en_GB, en_DK, nl_NL)
 locale-gen
 nano /etc/locale.conf
 >> LANG=en_GB.UTF-8
@@ -95,7 +95,7 @@ passwd
 Install bootloader ( [GRUB](https://wiki.archlinux.org/title/GRUB) ):
 ```
 pacman -S grub efibootmgr
-grub-install --efi-directory=esp --bootloader-id=GRUB
+grub-install --efi-directory=esp --bootloader-id=GRUB          #if esp failed: it's /boot
 grub-mkconfig -o /boot/grub/grub.cfg        #should detec intel-ucode if installed.
 ```
 # exit chroot and reboot (remove live media)
