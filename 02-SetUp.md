@@ -69,9 +69,9 @@ sudo pacman -S kde-applications
 ```
 Optional network manager:
 ```
-# following two lines: dhcpcd will do us fine for wired network only: it's bloated, but use below for wifi or other options
-### sudo pacman -S networkmanager
-### sudo systemctl enable NetworkManager.service
+=following two lines: dhcpcd will generally be fine for wired network only: it's bloated, but auto-config of network-connection is better for e.g. Star Citizen
+sudo pacman -S networkmanager
+sudo systemctl enable NetworkManager.service
 ```
 Display Manager (SDDM is reccommend for KDE plasma)
 ```
