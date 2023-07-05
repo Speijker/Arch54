@@ -43,5 +43,6 @@ Their amazing github (with great instructions) resides here: https://github.com/
 Also visit the org's discord: their #tech-desk has amazing people to help
 
 ### notes:
-- the install link in their LUG-helper script was broken: the button on Lutris.net works though!
-- 
+- ~~the install link in their LUG-helper script was broken: the button on Lutris.net works though!~~
+    ^ This was fixed
+- You may need to play with "prefer system libraries" in the wine runner options in Lutris (off for install, on to play, or vice versa).
