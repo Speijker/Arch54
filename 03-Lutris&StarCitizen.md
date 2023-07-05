@@ -32,7 +32,7 @@ get the LUG-helper script:
 navigate to a build folder first (e.g. Downloads/builds)
 ```
 git clone https://aur.archlinux.org/lug-helper.git
-makepkg -s -r -c    #optional options
+makepkg -s -r -c    #optional options ##You may need to install base-devel meta-package for binaries!
 sudo pacman -U lug-helper-1:2-7-1-any.pkg.tar.zst    #the name of your build package might differ
 sudo pacman -S zenity    #required for the GUI
 ```
