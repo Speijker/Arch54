@@ -1,3 +1,4 @@
+
 ### Installing Lutris (06 2023)
 
 install 32bit support for nvidia
@@ -31,7 +32,8 @@ get the LUG-helper script:
 [AUR wiki](https://wiki.archlinux.org/title/Arch_User_Repository)
 navigate to a build folder first (e.g. Downloads/builds)
 ```
-git clone https://aur.archlinux.org/lug-helper.git (Or use https://github.com/starcitizen-lug/lug-helper.git (and us git pull to update)
+git clone https://aur.archlinux.org/lug-helper.git
+(Or use https://github.com/starcitizen-lug/lug-helper.git (and us git pull to update). Run the lug-helper.sh
 makepkg -s -r -c    #optional options ##You may need to install base-devel meta-package for binaries!
 sudo pacman -U lug-helper-1:2-7-1-any.pkg.tar.zst    #the name of your build package might differ
 sudo pacman -S zenity    #required for the GUI
