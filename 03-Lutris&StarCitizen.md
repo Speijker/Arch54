@@ -31,7 +31,7 @@ get the LUG-helper script:
 [AUR wiki](https://wiki.archlinux.org/title/Arch_User_Repository)
 navigate to a build folder first (e.g. Downloads/builds)
 ```
-git clone https://aur.archlinux.org/lug-helper.git
+git clone https://aur.archlinux.org/lug-helper.git (Or use https://github.com/starcitizen-lug/lug-helper.git (and us git pull to update)
 makepkg -s -r -c    #optional options ##You may need to install base-devel meta-package for binaries!
 sudo pacman -U lug-helper-1:2-7-1-any.pkg.tar.zst    #the name of your build package might differ
 sudo pacman -S zenity    #required for the GUI
