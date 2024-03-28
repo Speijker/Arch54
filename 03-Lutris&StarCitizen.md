@@ -31,14 +31,19 @@ The LUG community has written a great script for installing, which is also uploa
 get the LUG-helper script:
 [AUR wiki](https://wiki.archlinux.org/title/Arch_User_Repository)
 navigate to a build folder first (e.g. Downloads/builds)
+
+This is the old script:
 ```
 git clone https://aur.archlinux.org/lug-helper.git
-(Or use https://github.com/starcitizen-lug/lug-helper.git (and us git pull to update). Run the lug-helper.sh
 makepkg -s -r -c    #optional options ##You may need to install base-devel meta-package for binaries!
 sudo pacman -U lug-helper-1:2-7-1-any.pkg.tar.zst    #the name of your build package might differ
 sudo pacman -S zenity    #required for the GUI
 ```
 Launch LUG-Helper from your applications, and run through it. Additional notes below!
+
+Instead of the old way above, use git clone https://github.com/starcitizen-lug/lug-helper.git (and us git pull to update). Run the lug-helper.sh  with `sh lug-helper.sh' in the correct folder.
+It'll kick off without the user interface if you don't install zenity.
+
 
 Their amazing github (with great instructions) resides here: https://github.com/starcitizen-lug/lug-helper
 
