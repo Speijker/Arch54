@@ -50,6 +50,13 @@ IN FDISK PROMPT:
 >> default    #should create Linux Filesystem with whatever''s left of the disk.
 >> w          #write all to disk!
 ```
+I'll also mount the second disk here (doing after making a user somehow breaks star citizen; couldn't find out why)
+```
+fdisk /dev/sdb
+g
+n
+default sizes
+```
 Formatting the disk and mounting
 ```
 mkfs.ext4 /dev/sda3  #write rootfolder
@@ -57,6 +64,7 @@ mkswap /dev/sda2
 mkfs.fat -F 32 /dev/sda1
 mount /dev/sda3 /mnt
 mount --mkdir /dev/sda1 /mnt/boot
+mount --mkdir /dev/sdb1 /mnt/home
 swapon /dev/sda2
 ```
 Installing the base packages
@@ -65,7 +73,7 @@ pacstrap -K /mnt base linux linux-firmware
 ```
 Install additional packages?
 ```
-pacstrap -K /mnt vim nano sudo intel-ucode dhcpcd
+pacstrap -K /mnt vim nano sudo intel-ucode networkmanager
 ```
 generate fstab file (disk index, by label for me:)
 ```
@@ -111,8 +119,10 @@ Name=eth*
 DHCP=yes
 ```
 Then enable and reboot:
+
+Edit: installed networkmanager (works better with plasma: use systemctl enable NetworkManager.service instead!)
 ```
-$ sudo systemctl start systemd-networkd
-$ sudo systemctl start systemd-resolved
+# $ sudo systemctl start systemd-networkd
+# $ sudo systemctl start systemd-resolved
 ```
 It's a lot easier if you remember to install dhcpcd, and sudo systemctl start dhcpcd. I've forgotten on a few test systems.
