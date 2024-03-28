@@ -82,6 +82,7 @@ Automate initcpio update after nvidia drivers are updated!
 ```
 sudo nano /etc/pacman.d/hooks/nvidia.hook
 ```
+(/etc/pacman.d/hooks might not exist: create folder with mkdir first)
 Create the following in the above:
 ```
 [Trigger]
