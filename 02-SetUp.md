@@ -24,6 +24,8 @@ sudo nano /etc/xdg/reflector/reflector.conf            #uncomment and add Nether
 sudo systemctl enable reflector.timer                  #rather than .service, this runs once a week by default.
 ```
 
+### Graphics Drivers:
+#### Nvidia
 [Archwiki](https://wiki.archlinux.org/title/NVIDIA): Install nvidia drivers (GTX970: NV124(GM204) drivers, so nvidia package is appropriate, which includes nvidia.utils which disables opensource drivers from initram.
 
 Note: you may need the multilib library here already: see part 03-Lutris.md, section 1
@@ -37,7 +39,20 @@ sudo mkinitcpio -P            # regenerate
 sudo reboot                   # The nvidia-utils package contains a file which blacklists the nouveau module, so rebooting is necessary.
 ```
 Once the driver has been installed, continue to #Xorg configuration or #Wayland.
-
+#### AMD:
+Note: you may need the multilib library here already: see part 03-Lutris.md, section 1
+I'm using a RX580 for this:
+https://wiki.archlinux.org/title/AMDGPU
+```
+lspci -k | grep -A 2 -E "(VGA|3D)"
+```
+Installing AMD drivers (enable multilib library first: https://wiki.archlinux.org/title/Official_repositories#Enabling_multilib
+```
+pacman -S mesa
+pacman -S xf86-video-amdgpu
+pacman -S --needed lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
+```
+Read on: https://wiki.archlinux.org/title/AMDGPU
 ### Xorg install
 [Xorg](https://wiki.archlinux.org/title/Xorg). One might try Wayland instead (newest drivers!) but that's for another time.
 
@@ -78,6 +93,7 @@ Display Manager (SDDM is reccommend for KDE plasma)
 sudo pacman -S sddm        #The sddm-kcm package (included in the plasma group) provides a GUI to configure SDDM in Plasma's system settings
 sudo systemctl enable sddm.service
 ```
+#### If you installed nvidia:
 Automate initcpio update after nvidia drivers are updated!
 ```
 sudo nano /etc/pacman.d/hooks/nvidia.hook
@@ -101,6 +117,7 @@ When=PostTransaction
 NeedsTargets
 Exec=/bin/sh -c 'while read -r trg; do case $trg in linux) exit 0; esac; done; /usr/bin/mkinitcpio -P'
 ```
+#### If you installed AMD;
 
 I hope that's it: if it boots, we'll continue with it's [configuration](https://wiki.archlinux.org/title/KDE#Configuration) (which is done inside plasma).
 ```
