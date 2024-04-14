@@ -52,7 +52,7 @@ pacman -S mesa
 pacman -S xf86-video-amdgpu
 pacman -S --needed lib32-mesa vulkan-radeon lib32-vulkan-radeon vulkan-icd-loader lib32-vulkan-icd-loader
 ```
-Read on: https://wiki.archlinux.org/title/AMDGPU
+Read on: https://wiki.archlinux.org/title/AMDGPU and https://github.com/starcitizen-lug/knowledge-base/wiki/Troubleshooting#-32bit-drivers
 ### Xorg install
 [Xorg](https://wiki.archlinux.org/title/Xorg). One might try Wayland instead (newest drivers!) but that's for another time.
 
