@@ -11,12 +11,13 @@ Start here: [Arch Linux Installation Guide](https://wiki.archlinux.org/title/Ins
 
 List and set the keyboard layouts: closest to US-International with dead keys (for dutch ' and " usage
 ```
-ls /usr/share/kbd/keymaps/**/*.map.gz
+localectl list-keymaps
 loadkeys us-acentos
 ```
 Verify Boot mode: should be filled with files
 ```
 ls /sys/firmware/efi/efivars
+cat /sys/firmware/efi/fw_platform_size
 ```
 The damn clock:
 ```
@@ -52,7 +53,7 @@ IN FDISK PROMPT:
 ```
 I'll also mount the second disk here (doing after making a user somehow breaks star citizen; couldn't find out why)
 ```
-fdisk /dev/sdb
+fdisk /dev/nvme0n1
 g
 n
 default sizes
